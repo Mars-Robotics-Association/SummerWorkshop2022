@@ -10,15 +10,28 @@ import org.firstinspires.ftc.teamcode.Core.InputSystem.ControllerInputListener;
 public class TrainingTeleOp extends OpMode implements ControllerInputListener
 {
     private TrainingBot robot;
+    private ControllerInput input;
 
     @Override
     public void init() {
+        input = new ControllerInput(gamepad1, 1);
+        input.addListener(this);
         robot = new TrainingBot(this, true, false, false);
+        robot.Init();
+    }
+
+    @Override
+    public void start(){
+        robot.Start();
     }
 
     @Override
     public void loop() {
-
+        input.Loop();
+        robot.Update();
+        //driving
+        robot.getChassis().DriveWithGamepad(input, 1, 1, 1);
+        telemetry.update();
     }
 
     @Override

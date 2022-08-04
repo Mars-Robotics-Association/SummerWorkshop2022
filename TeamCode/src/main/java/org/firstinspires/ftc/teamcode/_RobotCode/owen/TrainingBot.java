@@ -56,14 +56,14 @@ class TrainingBot extends BaseRobot
         //TODO ===INIT PAYLOAD===
 
         //TODO ===INIT CORE ROBOT===
-
+        chassis.InitCoreRobotModules();
 
         if(USE_NAVIGATOR) {
         }
     }
 
     public void Start(){
-        //if(USE_NAVIGATOR) navigator.NavigatorOn();
+        chassis.StartCoreRobotModules();
     }
 
     public void Update(){
