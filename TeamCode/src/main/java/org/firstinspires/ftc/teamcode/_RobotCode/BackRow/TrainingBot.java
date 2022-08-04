@@ -15,6 +15,7 @@ class TrainingBot extends BaseRobot {
     ////Dependencies////
     OpMode opMode;
     MecanumChassis chassis;
+    public MecanumChassis getChassis(){return chassis;}
     //Mechanical Components
     BlinkinController blinkinController;
 
@@ -32,7 +33,7 @@ class TrainingBot extends BaseRobot {
         if (USE_CHASSIS) {
             //initialize the chassis
 
-            chassis = new MecanumChassis(opMode, new _ChassisProfile(), new HermesLog("Tag",500,opMode ), this);
+            chassis = new MecanumChassis(opMode, new _ChassisProfile(), new HermesLog("Tag", 500, opMode), this);
 
         }
 
@@ -58,14 +59,14 @@ class TrainingBot extends BaseRobot {
         //TODO ===INIT PAYLOAD===
 
         //TODO ===INIT CORE ROBOT===
-
+        chassis.InitCoreRobotModules();
 
         if (USE_NAVIGATOR) {
         }
     }
 
     public void Start() {
-
+        chassis.StartCoreRobotModules();
         //if(USE_NAVIGATOR) navigator.NavigatorOn();
     }
 

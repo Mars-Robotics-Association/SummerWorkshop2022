@@ -6,21 +6,30 @@ import com.qualcomm.robotcore.eventloop.opmode.TeleOp;
 import org.firstinspires.ftc.teamcode.Core.InputSystem.ControllerInput;
 import org.firstinspires.ftc.teamcode.Core.InputSystem.ControllerInputListener;
 
-@TeleOp(name= "BackRow_Training_TeleOp")
-public class TrainingTeleOp extends OpMode implements ControllerInputListener
-{
+@TeleOp(name = "BackRow_Training_TeleOp")
+public class TrainingTeleOp extends OpMode implements ControllerInputListener {
     private TrainingBot robot;
+    private ControllerInput input;
 
     @Override
     public void init() {
-        robot = new TrainingBot(this,true,false,false);
 
+        input = new ControllerInput(gamepad1, 1);
+        input.addListener(this);
+        robot = new TrainingBot(this, true, false, false);
+    }
 
+    @Override
+    public void start() {
+        robot.Start();
     }
 
     @Override
     public void loop() {
-
+        input.Loop();
+        robot.Update();
+        robot.getChassis().DriveWithGamepad(input, 1, 1, 1);
+        telemetry.update();
     }
 
     @Override
