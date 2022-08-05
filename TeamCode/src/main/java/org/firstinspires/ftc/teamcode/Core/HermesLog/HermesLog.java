@@ -63,7 +63,7 @@ public class HermesLog
         }
     }
 
-    public HermesLog(`String` tag, String s) {
+    public HermesLog(String tag, String s) {
     }
 
     public void Start() {

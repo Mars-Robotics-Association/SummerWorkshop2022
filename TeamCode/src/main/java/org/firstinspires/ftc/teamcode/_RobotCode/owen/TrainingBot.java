@@ -2,6 +2,7 @@ package org.firstinspires.ftc.teamcode._RobotCode.owen;
 
 import com.acmerobotics.dashboard.FtcDashboard;
 import com.qualcomm.robotcore.eventloop.opmode.OpMode;
+import com.qualcomm.robotcore.hardware.Servo;
 
 import org.firstinspires.ftc.teamcode.Core.HermesLog.HermesLog;
 import org.firstinspires.ftc.teamcode.Core.MechanicalControlToolkit.Basic.BaseRobot;
@@ -15,6 +16,8 @@ class TrainingBot extends BaseRobot
     OpMode opMode;
     MecanumChassis chassis;
     public MecanumChassis getChassis(){return chassis;}
+    ServoController servoController;
+    public ServoController getServoController(){return servoController;}
     //Mechanical Components
     BlinkinController blinkinController;
 
@@ -33,6 +36,8 @@ class TrainingBot extends BaseRobot
             chassis = new MecanumChassis(opMode, new _ChassisProfile(),
                     new HermesLog("tag", 500, opMode), this);
         }
+        Servo servo = opMode.hardwareMap.servo.get("servo1");
+        servoController = new ServoController(opMode, servo);
 
         if(USE_PAYLOAD){
             //motors
@@ -80,6 +85,7 @@ class TrainingBot extends BaseRobot
 
 
     public BlinkinController getLights(){return blinkinController;}
-
+    public void ServoGoToMax(){servoController.GoToMax();}
+    public void ServoGoToMin(){servoController.GoToMin();}
 
 }

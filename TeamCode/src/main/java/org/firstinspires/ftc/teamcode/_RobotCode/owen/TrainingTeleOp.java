@@ -36,7 +36,7 @@ public class TrainingTeleOp extends OpMode implements ControllerInputListener
 
     @Override
     public void ButtonPressed(int id, ControllerInput.Button button) {
-
+        if(button == ControllerInput.Button.X) robot.ServoGoToMax();
     }
 
     @Override
