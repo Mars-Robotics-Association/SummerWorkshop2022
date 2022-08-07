@@ -73,6 +73,7 @@ class Demobot extends BaseRobot
 
     //TODO make sure to stop everything
     public void Stop(){
+        getChassis().Stop();
         if(USE_PAYLOAD) {
 
         }
